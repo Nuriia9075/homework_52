@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-status_task =[('new','новое'), ('in_progress','в процессе'), ('done', 'сделано')]
+status_task =[('new','новая'), ('in_progress','в процессе'), ('done', 'сделано')]
 class Task(models.Model):
     title = models.CharField(max_length=100,verbose_name= "Название")
     status = models.CharField(max_length= 50, choices=status_task, default='new')
