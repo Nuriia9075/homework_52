@@ -1,0 +1,47 @@
+[
+{
+    "model": "todo.task",
+    "pk": 1,
+    "fields": {
+        "title": "Task 1",
+        "status": "new",
+        "end_date": "2026-05-15"
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 2,
+    "fields": {
+        "title": "task 2",
+        "status": "new",
+        "end_date": "2026-05-04"
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 3,
+    "fields": {
+        "title": "Task 3",
+        "status": "new",
+        "end_date": "2026-05-12"
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 4,
+    "fields": {
+        "title": "Task 4",
+        "status": "in_progress",
+        "end_date": null
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 5,
+    "fields": {
+        "title": "task 5",
+        "status": "new",
+        "end_date": "2026-05-06"
+    }
+}
+]
