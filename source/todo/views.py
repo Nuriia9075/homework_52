@@ -1,5 +1,8 @@
+from django.db.models import Model
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+
+import todolist
 from todo.models import Task, status_task
 
 
@@ -28,4 +31,7 @@ def task_detail(request, task_id):
             return render(request, 'task_detail.html', {'task': task})
         except Task.DoesNotExist:
             return HttpResponseRedirect('/tasks')
-    return HttpResponseRedirect('/tasks')
+    else:
+        task = Task.objects.get(id = int(task_id))
+        task.delete()
+        return HttpResponseRedirect('/tasks')

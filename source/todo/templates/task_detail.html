@@ -29,6 +29,8 @@
         <h1>Задачa</h1>
         <a class="btn btn-sm btn-outline-primary fs-5 px-3 lh-lg" href="/tasks/add/">Добавить задачу</a>
     </div>
+    <form id="article-form" action="" method="POST">
+        {% csrf_token %}
     <table class="table table-striped table-hover">
       <thead>
         <tr>
@@ -44,9 +46,14 @@
             <td>{{task.title}}</td>
             <td>{{task.get_status_display}}</td>
             <td> {% if task.end_date %} {{task.end_date}} {% else %} Пока нет данных {% endif %}</td>
+            <td><div class="card-footer text-end py-3">
+                    <button type="submit" form="article-form" class="btn btn-sm btn-primary">Удалить</button>
+                </div>
+            </td>
         </tr>
       </tbody>
     </table>
+    </form>
 </div>
 </body>
 </html>
