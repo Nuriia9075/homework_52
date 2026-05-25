@@ -22,7 +22,7 @@ def task_add(request):
     return render(request, 'task_add.html', {'status_task': status_task})
 
 def task_detail(request, task_id):
-    if request.method == 'POST':
+    if request.method == 'GET':
         try:
             task = Task.objects.get(id = int(task_id))
             return render(request, 'task_detail.html', {'task': task})

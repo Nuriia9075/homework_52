@@ -5,5 +5,5 @@ urlpatterns = [
     path("", tasks),
     path("tasks/", tasks),
     path("tasks/add/", task_add),
-    path("task/<int>", task_detail),
+    path("task/<int:task_id>", task_detail),
 ]
