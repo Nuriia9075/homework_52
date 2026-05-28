@@ -5,7 +5,8 @@
     "fields": {
         "title": "Task 1",
         "status": "new",
-        "end_date": "2026-05-15"
+        "end_date": "2026-05-15",
+        "description": "2 step"
     }
 },
 {
@@ -14,7 +15,8 @@
     "fields": {
         "title": "task 2",
         "status": "new",
-        "end_date": "2026-05-04"
+        "end_date": "2026-05-04",
+        "description": null
     }
 },
 {
@@ -23,7 +25,8 @@
     "fields": {
         "title": "Task 3",
         "status": "new",
-        "end_date": "2026-05-12"
+        "end_date": "2026-05-12",
+        "description": "3 step"
     }
 },
 {
@@ -32,7 +35,8 @@
     "fields": {
         "title": "Task 4",
         "status": "in_progress",
-        "end_date": null
+        "end_date": null,
+        "description": "5 step"
     }
 },
 {
@@ -41,7 +45,18 @@
     "fields": {
         "title": "task 5",
         "status": "new",
-        "end_date": "2026-05-06"
+        "end_date": "2026-05-06",
+        "description": "1 step"
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 6,
+    "fields": {
+        "title": "Task 5 ",
+        "status": "done",
+        "end_date": "2026-05-27",
+        "description": "step 1"
     }
 }
 ]

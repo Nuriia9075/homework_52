@@ -34,18 +34,18 @@
     <table class="table table-striped table-hover">
       <thead>
         <tr>
-            <th scope="col">#</th>
             <th scope="col">Задача</th>
             <th scope="col">Статус</th>
             <th scope="col">Дата завершения</th>
+            <th scope="col">Подробное описание</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-            <th scope="row">{{task.id}}</th>
             <td>{{task.title}}</td>
             <td>{{task.get_status_display}}</td>
-            <td> {% if task.end_date %} {{task.end_date}} {% else %} Пока нет данных {% endif %}</td>
+            <td> {% if task.end_date %} {{task.end_date}} {% else %} Пока не выполнено {% endif %}</td>
+            <td> {% if task.description %} <pre>{{task.description}}</pre> {% else %} нет подробного описание {% endif %}</td>
             <td><div class="card-footer text-end py-3">
                     <button type="submit" form="article-form" class="btn btn-sm btn-primary">Удалить</button>
                 </div>

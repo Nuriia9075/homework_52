@@ -1,7 +1,4 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
-
-
+from django.shortcuts import render, redirect
 from todo.models import Task, status_task
 
 
@@ -15,12 +12,17 @@ def task_add(request):
         if not request.POST['end_date']:
             end_date_value = None
         else : end_date_value = request.POST['end_date']
+        if not request.POST['description']:
+            description_value = None
+        else:
+            description_value = request.POST['description']
         Task.objects.create(
         title = request.POST['title'],
         status = request.POST['status'],
         end_date = end_date_value,
+        description = description_value,
         )
-        return HttpResponseRedirect('/tasks')
+        return redirect('/tasks')
     return render(request, 'task_add.html', {'status_task': status_task})
 
 def task_detail(request, task_id):
@@ -29,8 +31,8 @@ def task_detail(request, task_id):
             task = Task.objects.get(id = int(task_id))
             return render(request, 'task_detail.html', {'task': task})
         except Task.DoesNotExist:
-            return HttpResponseRedirect('/tasks')
+            return redirect('/tasks')
     else:
         task = Task.objects.get(id = int(task_id))
         task.delete()
-        return HttpResponseRedirect('/tasks')
+        return redirect('/tasks')

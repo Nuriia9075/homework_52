@@ -32,7 +32,6 @@
     <table class="table table-striped table-hover">
       <thead>
         <tr>
-            <th scope="col">#</th>
             <th scope="col">Задача</th>
             <th scope="col">Статус</th>
             <th scope="col">Подробнее</th>
@@ -41,7 +40,6 @@
       <tbody>
       {% for task in tasklist %}
         <tr>
-            <th scope="row">{{task.id}}</th>
             <td>{{task.title}}</td>
             <td>{{task.get_status_display}}</td>
             <td><a href="/task/{{ task.id }}" class="card-link mt-auto ms-auto">Подробнее</a></td>
