@@ -1,8 +1,7 @@
-from django.db.models import Model
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-import todolist
+
 from todo.models import Task, status_task
 
 
