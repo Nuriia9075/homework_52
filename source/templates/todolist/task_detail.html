@@ -4,9 +4,9 @@
 {% block content %}
     <div class="border rounded-3 my-4 d-flex justify-content-between p-3">
         <h1>Задачa</h1>
-        <a class="btn btn-sm btn-outline-primary fs-5 px-3 lh-lg" href="/tasks/add/">Добавить задачу</a>
+        <a class="btn btn-sm btn-outline-primary fs-5 px-3 lh-lg" href="{% url 'task_add' %}">Добавить задачу</a>
     </div>
-    <form id="article-form" action="" method="POST">
+    <form id="article-form" action="{% url 'task_detail' task.id %}" method="POST">
         {% csrf_token %}
     <table class="table table-striped table-hover">
       <thead>

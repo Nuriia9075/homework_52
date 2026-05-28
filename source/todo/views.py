@@ -22,7 +22,7 @@ def task_add(request):
         end_date = end_date_value,
         description = description_value,
         )
-        return redirect('/tasks')
+        return redirect('tasks')
     return render(request, 'todolist/task_add.html', {'status_task': status_task})
 
 def task_detail(request, task_id):
@@ -31,8 +31,8 @@ def task_detail(request, task_id):
             task = Task.objects.get(id = int(task_id))
             return render(request, 'todolist/task_detail.html', {'task': task})
         except Task.DoesNotExist:
-            return redirect('/tasks')
+            return redirect('tasks')
     else:
         task = Task.objects.get(id = int(task_id))
         task.delete()
-        return redirect('/tasks')
+        return redirect('tasks')
