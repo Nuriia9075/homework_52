@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect
-from todo.models import Task, status_task
+from django.shortcuts import render, redirect, get_object_or_404
+from todo.forms import AddTodoForm
+from todo.models import Task
 
 
 # Create your views here.
@@ -9,30 +10,30 @@ def tasks(request):
 
 def task_add(request):
     if request.method == 'POST':
-        if not request.POST['end_date']:
-            end_date_value = None
-        else : end_date_value = request.POST['end_date']
-        if not request.POST['description']:
-            description_value = None
-        else:
-            description_value = request.POST['description']
-        Task.objects.create(
-        title = request.POST['title'],
-        status = request.POST['status'],
-        end_date = end_date_value,
-        description = description_value,
-        )
-        return redirect('tasks')
-    return render(request, 'todolist/task_add.html', {'status_task': status_task})
-
-def task_detail(request, task_id):
-    if request.method == 'GET':
-        try:
-            task = Task.objects.get(id = int(task_id))
-            return render(request, 'todolist/task_detail.html', {'task': task})
-        except Task.DoesNotExist:
+       form = AddTodoForm(request.POST)
+       if form.is_valid():
+            form.save()
             return redirect('tasks')
     else:
-        task = Task.objects.get(id = int(task_id))
+        form = AddTodoForm()
+    return render(request, 'todolist/task_add.html', {'form': form})
+
+def task_detail(request, pk, *args,**kwargs):
+    task = get_object_or_404(Task, pk=pk)
+    if request.method == 'GET':
+        return render(request, 'todolist/task_detail.html', {'task': task})
+    else:
         task.delete()
-        return redirect('tasks')
+    return redirect('tasks')
+
+
+def task_update(request, pk,  *args,**kwargs):
+    task = get_object_or_404(Task, pk=pk)
+    if request.method == 'POST':
+        form = AddTodoForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect('task_detail', pk=task.pk)
+    else:
+        form = AddTodoForm(instance=task)
+    return render(request, 'todolist/task_update.html', {'form': form})

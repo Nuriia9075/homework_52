@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Добавление задачи</h1>
+<h1>Редактирование задачи</h1>
 <form action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <p><button type="submit" class="btn btn-success mt-2">Добавить</button></p>
+    <p><button type="submit" class="btn btn-success mt-2">Изменить</button></p>
 </form>
 {% endblock %}
