@@ -2,9 +2,7 @@
 
 {% block content %}
 <h1>Редактирование задачи</h1>
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <p><button type="submit" class="btn btn-success mt-2">Изменить</button></p>
+<form action="{% url 'task_update' task.pk %}" method="post">
+    {% include "todolist/partials/form.html" %}
 </form>
 {% endblock %}

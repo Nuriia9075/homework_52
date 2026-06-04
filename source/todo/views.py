@@ -20,12 +20,10 @@ def task_add(request):
 
 def task_detail(request, pk, *args,**kwargs):
     task = get_object_or_404(Task, pk=pk)
-    if request.method == 'GET':
-        return render(request, 'todolist/task_detail.html', {'task': task})
-    else:
+    if request.method == 'POST':
         task.delete()
-    return redirect('tasks')
-
+        return redirect('tasks')
+    return render(request, 'todolist/task_detail.html', {'task': task})
 
 def task_update(request, pk,  *args,**kwargs):
     task = get_object_or_404(Task, pk=pk)
@@ -36,4 +34,4 @@ def task_update(request, pk,  *args,**kwargs):
             return redirect('task_detail', pk=task.pk)
     else:
         form = AddTodoForm(instance=task)
-    return render(request, 'todolist/task_update.html', {'form': form})
+    return render(request, 'todolist/task_update.html', {'form': form, 'task': task})
