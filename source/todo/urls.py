@@ -1,10 +1,17 @@
-from todo.views import task_add, tasks, task_detail, task_update
+from todo.views import (
+    TaskAddView,
+    TaskListView,
+    TaskDeleteView,
+    TaskUpdateView,
+    TaskDetailView)
+
 from django.urls import path
 
 urlpatterns = [
-    path("", tasks, name="tasks"),
-    path("tasks/", tasks, name="tasks"),
-    path("tasks/add/", task_add, name="task_add"),
-    path("task/<int:pk>/", task_detail, name="task_detail"),
-    path("task/<int:pk>/edit/", task_update, name="task_update"),
+    path("", TaskListView.as_view(), name="list"),
+    path("tasks/", TaskListView.as_view(), name="tasks"),
+    path("tasks/add/", TaskAddView.as_view(), name="task_add"),
+    path("task/<int:pk>/",TaskDetailView.as_view(),  name="task_detail"),
+    path("task/<int:pk>/edit/", TaskUpdateView.as_view(), name="task_update"),
+    path("task/<int:pk>/delete/", TaskDeleteView.as_view(), name="task_delete"),
 ]
