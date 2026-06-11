@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from todo.forms import AddTodoForm
-from todo.models import Task
+from todo.models.task import Task
 
 
 # Create your views here.
