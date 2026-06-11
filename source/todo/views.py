@@ -24,7 +24,8 @@ class TaskAddView(View):
     def post(self, request, *args, **kwargs):
         form = AddTodoForm(request.POST)
         if form.is_valid():
-            form.save()
+            task = form.save()
+            task.type.set(form.cleaned_data['type'])
             return redirect('tasks')
         return render(request, 'todolist/task_add.html', {'form': form})
 
@@ -50,7 +51,8 @@ class TaskUpdateView(View):
     def post(self, request, *args, **kwargs):
         form = AddTodoForm(request.POST, instance=self.task)
         if form.is_valid():
-            form.save()
+            task = form.save()
+            task.type.set(form.cleaned_data['type'])
             return redirect('task_detail', pk=self.task.pk)
 
 
