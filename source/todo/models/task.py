@@ -7,7 +7,8 @@ class Task(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата редактирование")
     status =models.ForeignKey('todo.Status', on_delete=models.PROTECT, related_name='tasks')
-    type =models.ForeignKey('todo.Type', on_delete=models.PROTECT, related_name='tasks')
+    type_old = models.ForeignKey('todo.Type', on_delete=models.PROTECT, related_name='tasks_old', db_column='type_id')
+    type = models.ManyToManyField('todo.Type', related_name='tasks', verbose_name="Типы")
 
     def __str__(self):
         return self.title
