@@ -59,8 +59,6 @@ class TaskDeleteView(View):
         self.task = get_object_or_404(Task, pk=kwargs['pk'])
         return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request, *args, **kwargs):
-        return render(request, 'todolist/task_confirm_delete.html', {'task': self.task})
     def post(self, request, *args, **kwargs):
         self.task.delete()
         return redirect('tasks')

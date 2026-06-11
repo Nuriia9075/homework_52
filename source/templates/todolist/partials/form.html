@@ -1,3 +1,36 @@
-{% csrf_token %}
-{{ form.as_p }}
-<p><button type="submit" class="btn btn-success mt-2">Сохранить</button></p>
+<form id="book-form" action="" method="POST" novalidate>
+    {% csrf_token %}
+
+    {% for error in form.non_field_errors %}
+       <p class="text-danger fs-6">{{ error }}</p>
+    {% endfor %}
+    <p><label for="{{ form.title.id_for_label }}">{{ form.title.label }}</label></p>
+    <p>{{ form.title }}</p>
+    {% for error in form.title.errors %}
+       <p class="text-danger fs-6">{{ error }}</p>
+    {% endfor %}
+
+    <p><label for="{{ form.description.id_for_label }}">{{ form.description.label }}</label></p>
+    <p>{{ form.description }}</p>
+    {% for error in form.description.errors %}
+       <p class="text-danger fs-6">{{ error }}</p>
+    {% endfor %}
+
+    <p><label for="{{ form.status.id_for_label }}">{{ form.status.label }}</label></p>
+    <p>{{ form.status }}</p>
+    {% for error in form.status.errors %}
+       <p class="text-danger fs-6">{{ error }}</p>
+    {% endfor %}
+
+    <p><label for="{{ form.type.id_for_label }}">{{ form.type.label }}</label></p>
+    <p>{{ form.type }}</p>
+    {% for error in form.type.errors %}
+        <p class="text-danger fs-6">{{ error }}</p>
+    {% endfor %}
+
+
+    <div class="text-end">
+        <a href="{% url 'tasks' %}" class="btn btn-secondary me-2">Отмена</a>
+        <button type="submit" class="btn btn-success">Сохранить</button>
+    </div>
+</form>

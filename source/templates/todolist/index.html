@@ -10,14 +10,16 @@
     <tr>
         <th scope="col">Задача</th>
         <th scope="col">Статус</th>
+        <th scope="col">Тип</th>
         <th scope="col">Подробнее</th>
     </tr>
   </thead>
   <tbody>
-  {% for task in tasklist %}
+  {% for task in tasks %}
     <tr>
         <td>{{task.title}}</td>
-        <td>{{task.get_status_display}}</td>
+        <td>{{task.status.title}}</td>
+        <td>{{task.type.title}}</td>
         <td><a href="{% url 'task_detail' task.id %}" class="link-secondary text-decoration-none border-bottom border-secondary border-opacity-25 pb-1 link-underline-hover">Подробнее</a></td>
     </tr>
   {%endfor%}
