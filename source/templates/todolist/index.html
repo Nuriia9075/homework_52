@@ -19,7 +19,12 @@
     <tr>
         <td>{{task.title}}</td>
         <td>{{task.status.title}}</td>
-        <td>{{task.type.title}}</td>
+        <td>{% for type in task.type.all %}
+                {{ type.title }}{% if not forloop.last %}, {% endif %}
+            {% empty %}
+                <span class="text-muted">-</span>
+            {% endfor %}
+        </td>
         <td><a href="{% url 'task_detail' task.id %}" class="link-secondary text-decoration-none border-bottom border-secondary border-opacity-25 pb-1 link-underline-hover">Подробнее</a></td>
     </tr>
   {%endfor%}

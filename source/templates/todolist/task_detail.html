@@ -15,7 +15,12 @@
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">{{task.status.title}}</li>
-            <li class="list-group-item">{{task.type.title}}</li>
+            <li class="list-group-item">
+                {% for type in task.type.all %}
+                {{ type.title }}{% if not forloop.last %}, {% endif %}
+                {% empty %}
+                    <span class="text-muted">-</span>
+                {% endfor %}</li>
             <li class="list-group-item"><small class="text-muted fs-7">{{ task.created_at|date:"d.m.Y" }}</small></li>
           </ul>
           <div class="card-body">

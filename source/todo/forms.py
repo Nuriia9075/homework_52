@@ -11,10 +11,10 @@ class AddTodoForm(forms.ModelForm):
             label="Статус",
             widget=forms.Select(attrs={'class': 'form-control'})
         )
-        type = forms.ModelChoiceField(
+        type = forms.ModelMultipleChoiceField(
             queryset=Type.objects.all(),
-            label="Статус",
-            widget=forms.Select(attrs={'class': 'form-control'})
+            label="Тип",
+            widget=forms.SelectMultiple(attrs={'class': 'form-control'})
         )
         fields =[
             'title',
