@@ -1,8 +1,10 @@
 from django.db import models
+from todo.validators import validate_title
+
 
 # Create your models here.
 class Task(models.Model):
-    title = models.CharField(max_length=200,verbose_name= "Название")
+    title = models.CharField(validators= [validate_title], max_length=200,verbose_name= "Название")
     description = models.TextField(null=True, verbose_name='Подробное описание', blank=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата редактирование")
