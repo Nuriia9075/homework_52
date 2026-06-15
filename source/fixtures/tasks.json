@@ -63,12 +63,14 @@
     "model": "todo.task",
     "pk": 1,
     "fields": {
-        "title": "Task 1",
-        "description": "step",
+        "title": "tasktask1",
+        "description": "tasktask1",
         "created_at": "2026-06-11T11:15:29.252Z",
-        "updated_at": "2026-06-11T11:15:29.252Z",
+        "updated_at": "2026-06-15T12:19:46.817Z",
         "status": 1,
-        "type": [1]
+        "type": [
+            1
+        ]
     }
 },
 {
@@ -80,7 +82,9 @@
         "created_at": "2026-06-11T11:15:43.804Z",
         "updated_at": "2026-06-11T11:15:43.804Z",
         "status": 2,
-        "type": [2]
+        "type": [
+            2
+        ]
     }
 },
 {
@@ -92,7 +96,9 @@
         "created_at": "2026-06-11T11:15:55.890Z",
         "updated_at": "2026-06-11T11:18:45.946Z",
         "status": 3,
-        "type": [1]
+        "type": [
+            1
+        ]
     }
 },
 {
@@ -104,7 +110,9 @@
         "created_at": "2026-06-11T11:16:12.919Z",
         "updated_at": "2026-06-11T11:16:12.919Z",
         "status": 1,
-        "type": [1]
+        "type": [
+            1
+        ]
     }
 },
 {
@@ -116,7 +124,9 @@
         "created_at": "2026-06-11T11:16:27.260Z",
         "updated_at": "2026-06-11T11:16:27.260Z",
         "status": 2,
-        "type": [1]
+        "type": [
+            1
+        ]
     }
 },
 {
@@ -128,7 +138,140 @@
         "created_at": "2026-06-11T11:16:41.122Z",
         "updated_at": "2026-06-11T11:16:41.122Z",
         "status": 3,
-        "type": [2]
+        "type": [
+            2
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 7,
+    "fields": {
+        "title": "TaskTask10",
+        "description": "TaskTask10",
+        "created_at": "2026-06-11T12:06:42.276Z",
+        "updated_at": "2026-06-15T12:20:53.618Z",
+        "status": 1,
+        "type": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 8,
+    "fields": {
+        "title": "rfrrkfjkd",
+        "description": "11111111111111111111",
+        "created_at": "2026-06-15T10:36:29.979Z",
+        "updated_at": "2026-06-15T10:36:51.232Z",
+        "status": 1,
+        "type": [
+            2
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 9,
+    "fields": {
+        "title": "11111111111111111",
+        "description": "0101",
+        "created_at": "2026-06-15T10:42:50.580Z",
+        "updated_at": "2026-06-15T10:42:50.580Z",
+        "status": 3,
+        "type": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 10,
+    "fields": {
+        "title": "task wjhf",
+        "description": "dnkjfshf",
+        "created_at": "2026-06-15T12:10:47.850Z",
+        "updated_at": "2026-06-15T12:10:47.850Z",
+        "status": 1,
+        "type": [
+            1
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 11,
+    "fields": {
+        "title": "task 23726",
+        "description": "fjehfjehr;fiefrfrff",
+        "created_at": "2026-06-15T12:11:08.960Z",
+        "updated_at": "2026-06-15T12:11:08.960Z",
+        "status": 2,
+        "type": [
+            2
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 12,
+    "fields": {
+        "title": "task 784",
+        "description": "efejfrejghrjegjrtegnhjt",
+        "created_at": "2026-06-15T12:11:24.327Z",
+        "updated_at": "2026-06-15T12:11:24.327Z",
+        "status": 2,
+        "type": [
+            3
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 13,
+    "fields": {
+        "title": "tasklskaf",
+        "description": "fmerklfkjer:F",
+        "created_at": "2026-06-15T12:11:40.862Z",
+        "updated_at": "2026-06-15T12:11:40.862Z",
+        "status": 3,
+        "type": [
+            3
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 14,
+    "fields": {
+        "title": "hdusfahfas",
+        "description": "kmfdfk",
+        "created_at": "2026-06-15T12:12:03.523Z",
+        "updated_at": "2026-06-15T12:12:03.523Z",
+        "status": 2,
+        "type": [
+            1
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 15,
+    "fields": {
+        "title": "ddddddddddddddddddfsf",
+        "description": "sfdsfa",
+        "created_at": "2026-06-15T12:12:23.871Z",
+        "updated_at": "2026-06-15T12:12:23.871Z",
+        "status": 3,
+        "type": [
+            1,
+            3
+        ]
     }
 }
 ]
