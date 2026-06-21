@@ -10,6 +10,7 @@ class Task(models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата редактирование")
     status =models.ForeignKey('todo.Status', on_delete=models.PROTECT, related_name='tasks')
     type = models.ManyToManyField('todo.Type', related_name='tasks', verbose_name="Типы")
+    project =models.ForeignKey('todo.Project', null = True, blank= True, on_delete=models.CASCADE, related_name='tasks')
 
     def __str__(self):
         return self.title
