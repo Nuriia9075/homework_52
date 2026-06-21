@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% block content %}
 <div class="border rounded-3 my-4 d-flex justify-content-between p-3">
     <h1>Задачи</h1>
@@ -27,7 +26,12 @@
         </td>
         <td><a href="{% url 'task_detail' task.id %}" class="link-secondary text-decoration-none border-bottom border-secondary border-opacity-25 pb-1 link-underline-hover">Подробнее</a></td>
     </tr>
-  {%endfor%}
+        {% empty %}
+            <p>Нет данных</p>
+        {% endfor %}
   </tbody>
 </table>
+{% if is_paginated %}
+        {% include 'todolist/partials/pagination.html' %}
+{% endif %}
 {% endblock %}

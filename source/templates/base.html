@@ -15,12 +15,19 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm py-3">
       <div class="container">
-        <a class="navbar-brand fw-bold fs-4 text-gradient" href="{% url 'tasks' %}">
+        <a class="navbar-brand fw-bold fs-4 text-gradient" href="{% url 'projects' %}">
+            Все проекты
+        </a>
+          <a class="navbar-brand fw-bold fs-4 text-gradient" href="{% url 'tasks' %}">
             Все задачи
         </a>
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+          <form class="d-flex" action="" method="GET">
+                {{ search_form }}
+                <button class="btn btn-sm btn-outline-primary" type="submit">Поиск</button>
+     </form>
       </div>
     </nav>
 <div class="container">

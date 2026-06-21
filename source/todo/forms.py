@@ -34,3 +34,6 @@ class AddTodoForm(forms.ModelForm):
         if description and title and description == title:
             raise ValidationError("Описание и название идентичны")
         return cleaned_data
+
+class SimpleSearchForm(forms.Form):
+     search = forms.CharField(max_length=100, required=False, label="")
