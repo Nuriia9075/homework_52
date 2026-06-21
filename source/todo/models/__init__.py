@@ -5,6 +5,6 @@ from todo.models.project import Project
 __all__ = [
     'Task',
     'Status',
-    'Type'
+    'Type',
     'Project'
 ]
