@@ -51,14 +51,3 @@ class ProjectForm(forms.ModelForm):
            'end_at': forms.DateInput(attrs={'class':'form-control'}),
        }
 
-class ProjectDeleteForm(forms.ModelForm):
-    class Meta:
-        model = Project
-        fields = ["name"]
-
-    def clean_title(self):
-        name = self.cleaned_data['name']
-
-        if name == self.instance.name:
-            return name
-        raise ValidationError("Название не совпадает с оригиналом")

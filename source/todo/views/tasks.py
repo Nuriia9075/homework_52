@@ -1,7 +1,12 @@
-from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView, View
-from todo.forms import TaskForm
-from todo.models.task import Task
+from django.urls import reverse
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
+from django.db.models import Q
+from todo.forms import SimpleSearchForm,TaskForm
+from todo.models.project import Project
+from  todo.models.task import Task
+from urllib.parse import urlencode
+from django.shortcuts import render, redirect, get_object_or_404
 
 
 # Create your views here.
@@ -10,6 +15,26 @@ class TaskListView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['tasks'] = Task.objects.all().order_by('-created_at')
+        return context
+
+class ProjectTaskAddView(CreateView):
+    model = Task
+    form_class = TaskForm
+    template_name = "todolist/task_add.html"
+
+    def form_valid(self, form):
+        project = get_object_or_404(Project, pk=self.kwargs['pk'])
+        task = form.save(commit=False)
+        task.project = project
+        task.save()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse("detail", kwargs={"pk": self.kwargs['pk']})
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search_form'] = SimpleSearchForm()
         return context
 
 class TaskDetailView(TemplateView):
