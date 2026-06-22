@@ -1,10 +1,11 @@
-from django.urls import reverse
-from django.views.generic import ListView, DetailView, CreateView
+from django.urls import reverse, reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from django.db.models import Q
-from todo.forms import SimpleSearchForm, ProjectForm
+from todo.forms import SimpleSearchForm, ProjectForm, ProjectDeleteForm, TaskForm
 from todo.models.project import Project
+from  todo.models.task import Task
 from urllib.parse import urlencode
-
+from django.shortcuts import render, redirect, get_object_or_404
 
 # Create your views here.
 class ProjectListView(ListView):
@@ -50,7 +51,7 @@ class ProjectDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['search_form'] = SimpleSearchForm
+        context['search_form'] = SimpleSearchForm()
         context['tasks'] = self.object.tasks.select_related().all()
         return context
 
@@ -60,9 +61,54 @@ class ProjectCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['search_form'] = SimpleSearchForm
+        context['search_form'] = SimpleSearchForm()
         return context
 
     def get_success_url(self):
         return reverse("detail", kwargs={"pk": self.object.pk})
 
+class ProjectTaskAddView(CreateView):
+    model = Task
+    form_class = TaskForm
+    template_name = "todolist/task_add.html"
+
+    def form_valid(self, form):
+        project = get_object_or_404(Project, pk=self.kwargs['pk'])
+        task = form.save(commit=False)
+        task.project = project
+        task.save()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse("detail", kwargs={"pk": self.kwargs['pk']})
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search_form'] = SimpleSearchForm()
+        return context
+
+class ProjectUpdateView(UpdateView):
+    model = Project
+    form_class = ProjectForm
+    template_name = "project/update.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search_form'] = SimpleSearchForm()
+        return context
+
+    def get_success_url(self):
+        return reverse("detail", kwargs={"pk": self.kwargs['pk']})
+
+class ProjectDeleteView(DeleteView):
+    template_name = "project/delete.html"
+    model = Project
+    form_class = ProjectDeleteForm
+    success_url = reverse_lazy("list")
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+
+        if self.request.method == 'POST':
+            kwargs['instance'] = self.object
+        return kwargs

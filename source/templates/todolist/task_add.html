@@ -2,7 +2,11 @@
 
 {% block content %}
 <h1>Добавление задачи</h1>
-<form action="" method="post">
+<form action="" id="task-form"  method="post">
+    {% csrf_token %}
     {% include "todolist/partials/form.html" %}
 </form>
+<div class="card-footer text-end py-3">
+    <button type="submit" form="task-form" class="btn btn-primary">Сохранить задачу</button>
+</div>
 {% endblock %}

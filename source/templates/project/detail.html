@@ -12,7 +12,7 @@
             </figure>
         </div>
         <div class="text-end me-3 mb-3">
-            <a href="#" class="btn btn-outline-warning">
+            <a href="{% url 'update' project.pk %}" class="btn btn-outline-warning">
                 <span>Изменить</span><i class="fa-regular fa-pen-to-square ms-2"></i>
             </a>
             <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#project-{{ project.pk }}-Modal">
@@ -28,8 +28,8 @@
             {% include 'todolist/partials/list_tasks.html' %}
         </div>
         <div class="text-end me-3 mb-3">
-            <a href="{% url 'task_add' %}" class="btn btn-outline-warning">
-                <span>Добавить Задачу</span>
+            <a href="{% url 'task_add' project.pk %}" class="btn btn-outline-warning">
+                <span>Добавить задачу</span>
             </a>
         </div>
     </div>

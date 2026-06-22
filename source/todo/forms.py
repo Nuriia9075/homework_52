@@ -6,7 +6,7 @@ from todo.models.status_type import Status,Type
 from django.core.exceptions import ValidationError
 
 
-class AddTodoForm(forms.ModelForm):
+class TaskForm(forms.ModelForm):
     status = forms.ModelChoiceField(
         queryset=Status.objects.all(),
         label="Статус",
@@ -50,3 +50,15 @@ class ProjectForm(forms.ModelForm):
            'created_at': forms.DateInput(attrs={'class':'form-control'}),
            'end_at': forms.DateInput(attrs={'class':'form-control'}),
        }
+
+class ProjectDeleteForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ["name"]
+
+    def clean_title(self):
+        name = self.cleaned_data['name']
+
+        if name == self.instance.name:
+            return name
+        raise ValidationError("Название не совпадает с оригиналом")
