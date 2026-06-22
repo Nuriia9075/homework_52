@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="card my-5">
+        <div class="card-header fs-4 text-center py-3">Удаление проекта"{{ project.name }}"</div>
+        <div class="card-body">
+            <p>Для удаления проекта, введите название</p>
+            <form action="" id="project-form" method="POST">
+                {% csrf_token %}
+            </form>
+        </div>
+        <div class="card-footer text-end py-3">
+             <a href="{% url 'detail' task.project.pk %}"  class="btn btn-sm btn-success">Отменить</a>
+            <button type="submit" form="project-form" class="btn btn-sm btn-danger">Удалить</button>
+        </div>
+    </div>
+{% endblock %}

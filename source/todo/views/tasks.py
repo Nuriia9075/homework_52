@@ -64,7 +64,7 @@ class TaskUpdateView(UpdateView):
 
 class TaskDeleteView(DeleteView):
     model = Task
-    template_name = "todolist/task_confirm_delete.html"
+    template_name = "todolist/task_delete.html"
 
     def form_valid(self, form):
         self.object = self.get_object()
