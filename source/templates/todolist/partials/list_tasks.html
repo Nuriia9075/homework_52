@@ -18,7 +18,7 @@
                 <span class="text-muted">-</span>
             {% endfor %}
         </td>
-        <td><a href="{% url 'task_detail' task.id %}" class="link-secondary text-decoration-none border-bottom border-secondary border-opacity-25 pb-1 link-underline-hover">Подробнее</a></td>
+        <td><a href="{% url 'task_detail' task.pk %}" class="link-secondary text-decoration-none border-bottom border-secondary border-opacity-25 pb-1 link-underline-hover">Подробнее</a></td>
     </tr>
         {% empty %}
             <p>Нет задач</p>

@@ -11,6 +11,7 @@ class Task(models.Model):
     status =models.ForeignKey('todo.Status', on_delete=models.PROTECT, related_name='tasks')
     type = models.ManyToManyField('todo.Type', related_name='tasks', verbose_name="Типы")
     project =models.ForeignKey('todo.Project', on_delete=models.CASCADE, related_name='tasks')
+    is_deleted= models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
