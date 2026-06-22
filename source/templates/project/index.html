@@ -35,7 +35,7 @@
 {% if is_paginated %}
     {% include 'todolist/partials/pagination.html' %}
 {% endif %}
-{% for article in articles %}
+{% for project in projects %}
     {% include 'todolist/partials/project_delete_modal.html' with project=project %}
 {% endfor %}
 
