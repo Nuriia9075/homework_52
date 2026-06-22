@@ -2,35 +2,8 @@
 {% block content %}
 <div class="border rounded-3 my-4 d-flex justify-content-between p-3">
     <h1>Задачи</h1>
-    <a class="btn btn-sm btn-outline-primary fs-5 px-3 lh-lg" href="{% url 'task_add' %}">Добавить задачу</a>
 </div>
-<table class="table table-striped table-hover">
-  <thead>
-    <tr>
-        <th scope="col">Задача</th>
-        <th scope="col">Статус</th>
-        <th scope="col">Тип</th>
-        <th scope="col">Подробнее</th>
-    </tr>
-  </thead>
-  <tbody>
-  {% for task in tasks %}
-    <tr>
-        <td>{{task.title}}</td>
-        <td>{{task.status.title}}</td>
-        <td>{% for type in task.type.all %}
-                {{ type.title }}{% if not forloop.last %}, {% endif %}
-            {% empty %}
-                <span class="text-muted">-</span>
-            {% endfor %}
-        </td>
-        <td><a href="{% url 'task_detail' task.id %}" class="link-secondary text-decoration-none border-bottom border-secondary border-opacity-25 pb-1 link-underline-hover">Подробнее</a></td>
-    </tr>
-        {% empty %}
-            <p>Нет данных</p>
-        {% endfor %}
-  </tbody>
-</table>
+{% include 'todolist/partials/list_tasks.html' %}
 {% if is_paginated %}
         {% include 'todolist/partials/pagination.html' %}
 {% endif %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="card my-5">
+        <div class="card-header fs-4 text-center">{{ project.name }}</div>
+        <div class="card-body">
+            <figure>
+                <blockquote class="blockquote">
+                    <p>{{ project.description }}</p>
+                </blockquote>
+                <p>Дата создание: {{ project.created_at| date:'Y-m-d' }}</p>
+                <p>Дата окончание: {{ project.end_at| date:'Y-m-d' }}
+            </figure>
+        </div>
+        <div class="text-end me-3 mb-3">
+            <a href="#" class="btn btn-outline-warning">
+                <span>Изменить</span><i class="fa-regular fa-pen-to-square ms-2"></i>
+            </a>
+            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#project-{{ project.pk }}-Modal">
+                <span>Удалить</span><i class="fa-regular fa-trash-can ms-2"></i>
+            </button>
+        </div>
+    </div>
+        <div class="card my-5">
+        <div class="card-header">
+            Задачи
+        </div>
+        <div class="card-body">
+            {% include 'todolist/partials/list_tasks.html' %}
+        </div>
+        <div class="text-end me-3 mb-3">
+            <a href="{% url 'task_add' %}" class="btn btn-outline-warning">
+                <span>Добавить Задачу</span>
+            </a>
+        </div>
+    </div>
+    {% include 'todolist/partials/project_delete_modal.html' with project=project %}
+{% endblock %}

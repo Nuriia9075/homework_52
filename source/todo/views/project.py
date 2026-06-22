@@ -1,6 +1,7 @@
-from django.views.generic import ListView
+from django.urls import reverse
+from django.views.generic import ListView, DetailView, CreateView
 from django.db.models import Q
-from todo.forms import SimpleSearchForm
+from todo.forms import SimpleSearchForm, ProjectForm
 from todo.models.project import Project
 from urllib.parse import urlencode
 
@@ -42,3 +43,21 @@ class ProjectListView(ListView):
             context['query'] = urlencode({"search": self.search_value})
             context['search_value'] = self.search_value
         return context
+
+class ProjectDetailView(DetailView):
+    template_name = "project/detail.html"
+    model = Project
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search_form'] = SimpleSearchForm
+        context['tasks'] = self.object.tasks.select_related().all()
+        return context
+
+class ProjectCreateView(CreateView):
+    template_name = "project/create.html"
+    form_class = ProjectForm
+
+    def get_success_url(self):
+        return reverse("detail", kwargs={"pk": self.object.pk})
+

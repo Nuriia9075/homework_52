@@ -18,15 +18,12 @@
         <a class="navbar-brand fw-bold fs-4 text-gradient" href="{% url 'projects' %}">
             Все проекты
         </a>
-          <a class="navbar-brand fw-bold fs-4 text-gradient" href="{% url 'tasks' %}">
-            Все задачи
-        </a>
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-          <form class="d-flex" action="" method="GET">
-                {{ search_form }}
-                <button class="btn btn-sm btn-outline-primary" type="submit">Поиск</button>
+          <form class="d-flex" action="{% url 'projects' %}" method="GET">
+              {{ search_form }}
+              <button class="btn btn-sm btn-outline-primary" type="submit">Поиск</button>
      </form>
       </div>
     </nav>
@@ -37,6 +34,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
-<script src="https://kit.fontawesome.com/YOUR_KIT_CODE.js" crossorigin="anonymous"></script
+<script src="https://kit.fontawesome.com/YOUR_KIT_CODE.js" crossorigin="anonymous"></script>
 </body>
 </html>
