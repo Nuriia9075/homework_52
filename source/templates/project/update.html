@@ -1,15 +1,6 @@
 {% extends "base.html" %}
+{% load django_bootstrap5 %}
+
 {% block content %}
-    <div class="card my-5">
-        <div class="card-header fs-4 text-center py-3">Редактирование проекта</div>
-        <div class="card-body">
-            <form action="" id="project-form" method="POST">
-                {% csrf_token %}
-                {% include 'partials/project_form.html' %}
-            </form>
-        </div>
-        <div class="card-footer text-end py-3">
-            <button type="submit" form="project-form" class="btn btn-sm btn-primary">Сохранить</button>
-        </div>
-    </div>
+    {% include 'partials/form.html' with form_title="Редактирование проекта" btn_txt="Сохранить" %}
 {% endblock %}

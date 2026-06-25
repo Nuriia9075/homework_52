@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+
+
 # Create your views here.
 def login_view(request):
     context = {}
@@ -9,7 +11,11 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('article_index')
+            return redirect('todo:projects')
         else:
             context['has_error'] = True
     return render(request, 'login.html', context=context)
+
+def logout_view(request):
+    logout(request)
+    return redirect('todo:projects')

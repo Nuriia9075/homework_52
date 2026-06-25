@@ -2,12 +2,12 @@
 {% block content %}
 <div class="border rounded-3 my-4 d-flex justify-content-between p-3">
     <h1>Проекты</h1>
-    <a class="btn btn-sm btn-outline-primary fs-5 px-3 lh-lg" href="{% url 'create' %}">Добавить проект</a>
+    <a class="btn btn-sm btn-outline-primary fs-5 px-3 lh-lg" href="{% url 'todo:create' %}">Добавить проект</a>
 </div>
  <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-4">
     {% for project in projects %}
         <div class="col">
-        <a href="{% url 'detail' project.pk %}" class="card-link">
+        <a href="{% url 'todo:detail' project.pk %}" class="card-link">
             <div class="card card-list border-secondary h-100 mb-3">
                 <div class="card-header d-flex justify-content-between">
                     <h5 class="card-title">{{ project.name }}</h5>
@@ -18,7 +18,7 @@
                         {% if project.description %}{{ project.description|truncatewords:5 }}{% else %}---{% endif %}</p>
                 </div>
                 <div class="text-end me-3">
-                    <a href="{% url 'update' project.pk %}" class="btn btn-outline-warning">
+                    <a href="{% url 'todo:update' project.pk %}" class="btn btn-outline-warning">
                         <i class="fa-regular fa-pen-to-square"></i>
                     </a>
                     <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#project-{{ project.pk }}-Modal">

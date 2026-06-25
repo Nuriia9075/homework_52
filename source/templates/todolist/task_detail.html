@@ -4,26 +4,26 @@
     <div class="border rounded-3 my-4 d-flex justify-content-between p-3 align-items-center bg-light shadow-sm">
         <h1 class="m-0 fs-3 fw-bold text-dark">Детали задачи</h1>
     </div>
-
-    <form id="article-form" action="{% url 'task_detail' task.pk %}" method="POST">
+<form id="article-form" action="{% url 'todo:task_detail' task.pk %}" method="POST">
         {% csrf_token %}
         <div class="card" style="width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title">Название: {{task.title}}</h5>
-            <p class="card-text">{{task.description}}</p>
+            <h5 class="card-title">Название: {{ task.title }}</h5>
+            <p class="card-text">{{ task.description }}</p>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">{{task.status.title}}</li>
+            <li class="list-group-item">{{ task.status.title }}</li>
             <li class="list-group-item">
                 {% for type in task.type.all %}
-                {{ type.title }}{% if not forloop.last %}, {% endif %}
+                    {{ type.title }}{% if not forloop.last %}, {% endif %}
                 {% empty %}
                     <span class="text-muted">-</span>
-                {% endfor %}</li>
+                {% endfor %}
+            </li>
             <li class="list-group-item"><small class="text-muted fs-7">{{ task.created_at|date:"d.m.Y" }}</small></li>
           </ul>
           <div class="card-body">
-            <a href="{% url 'task_update' task.pk %}" class="btn btn-sm btn-outline-warning me-1">
+            <a href="{% url 'todo:task_update' task.pk %}" class="btn btn-sm btn-outline-warning me-1">
                 <i class="fa-regular fa-pen-to-square me-1"></i>
             </a>
             <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
@@ -32,25 +32,5 @@
           </div>
         </div>
     </form>
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title text-danger" id="deleteModalLabel">Удаление задачи</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Вы уверены, что хотите удалить задачу "<strong>{{ task.title }}</strong>"?
-      </div>
-      <div class="modal-footer">
-        <form action="{% url 'task_delete' task.pk %}" method="POST">
-            {% csrf_token %}
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-            <button type="submit" class="btn btn-danger">Да, удалить</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
+   {% include 'partials/task_delete_modal.html' with task=task %}
 {% endblock %}

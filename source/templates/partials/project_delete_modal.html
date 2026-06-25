@@ -5,8 +5,7 @@
         <h5 class="modal-title" id="exampleModalLabel">Удаление проекта</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-
-      <form action="{% url 'delete' project.pk %}" method="POST" id="delete-form-{{ project.pk }}">
+      <form action="{% url 'todo:delete' project.pk %}" method="POST" id="delete-form-{{ project.pk }}">
         {% csrf_token %}
         <div class="modal-body text-start">
           <p>Вы уверены, что хотите удалить проект "{{ project.name }}"?</p>

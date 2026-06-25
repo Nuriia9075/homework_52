@@ -1,11 +1,7 @@
-from django.views.generic import TemplateView, View
 from django.urls import reverse
-from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
-from django.db.models import Q
+from django.views.generic import CreateView, DeleteView, UpdateView
 from todo.models.project import Project
-from django.shortcuts import render, redirect, get_object_or_404
-
-
+from django.shortcuts import redirect, get_object_or_404
 from django.http import Http404
 from django.views.generic import DetailView
 from todo.models.task import Task
@@ -41,7 +37,7 @@ class ProjectTaskAddView(CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse("detail", kwargs={"pk": self.kwargs['pk']})
+        return reverse("todo:detail", kwargs={"pk": self.kwargs['pk']})
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -59,7 +55,7 @@ class TaskUpdateView(UpdateView):
         return context
 
     def get_success_url(self):
-        return reverse("detail", kwargs={"pk": self.object.project.pk})
+        return reverse("todo:detail", kwargs={"pk": self.object.project.pk})
 
 
 class TaskDeleteView(DeleteView):
@@ -70,4 +66,4 @@ class TaskDeleteView(DeleteView):
         self.object = self.get_object()
         self.object.is_deleted = True
         self.object.save()
-        return redirect('detail', pk=self.object.project.pk)
+        return redirect('todo:detail', pk=self.object.project.pk)
