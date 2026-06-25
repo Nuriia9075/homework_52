@@ -6,6 +6,7 @@ from django.http import Http404
 from django.views.generic import DetailView
 from todo.models.task import Task
 from todo.forms import SimpleSearchForm, TaskForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class TaskDetailView(DetailView):
     model = Task
@@ -23,7 +24,7 @@ class TaskDetailView(DetailView):
         context['search_form'] = SimpleSearchForm()
         return context
 
-class ProjectTaskAddView(CreateView):
+class ProjectTaskAddView(LoginRequiredMixin, CreateView):
     model = Task
     form_class = TaskForm
     template_name = "todolist/task_add.html"
@@ -44,7 +45,7 @@ class ProjectTaskAddView(CreateView):
         context['search_form'] = SimpleSearchForm()
         return context
 
-class TaskUpdateView(UpdateView):
+class TaskUpdateView(LoginRequiredMixin, UpdateView):
     model = Task
     form_class = TaskForm
     template_name = "todolist/task_update.html"
@@ -58,7 +59,7 @@ class TaskUpdateView(UpdateView):
         return reverse("todo:detail", kwargs={"pk": self.object.project.pk})
 
 
-class TaskDeleteView(DeleteView):
+class TaskDeleteView(LoginRequiredMixin, DeleteView):
     model = Task
     template_name = "todolist/task_delete.html"
 
