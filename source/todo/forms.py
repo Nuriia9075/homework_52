@@ -1,5 +1,4 @@
 from django import forms
-
 from todo.models import Project
 from todo.models.task import Task
 from todo.models.status_type import Status,Type
@@ -13,17 +12,12 @@ class TaskForm(forms.ModelForm):
         widget=forms.Select(attrs={'class': 'form-control'})
     )
     type = forms.ModelMultipleChoiceField(
-        queryset=Type.objects.all(),
-        label="Тип",
+        queryset=Type.objects.all(),label="Тип",
         widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'})
     )
     class Meta:
         model = Task
-        fields =[
-            'title',
-            'description',
-            'status',
-            'type', ]
+        fields =['title','description', 'status','type']
 
         widgets = {
             'title': forms.TextInput(attrs={'class':'form-control'}),

@@ -50,7 +50,7 @@ class ProjectDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['search_form'] = SimpleSearchForm()
-        context['tasks'] = self.object.tasks.select_related().all()
+        context['tasks'] = self.object.tasks.exclude(is_deleted=True)
         return context
 
 class ProjectCreateView(CreateView):

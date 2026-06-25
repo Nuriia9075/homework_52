@@ -12,6 +12,8 @@ class Task(models.Model):
     type = models.ManyToManyField('todo.Type', related_name='tasks', verbose_name="Типы")
     project =models.ForeignKey('todo.Project', on_delete=models.CASCADE, related_name='tasks')
     is_deleted= models.BooleanField(default=False)
+    class Meta:
+        db_table = 'task'
 
     def __str__(self):
         return self.title
