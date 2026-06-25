@@ -4,7 +4,7 @@
     "pk": 1,
     "fields": {
         "password": "pbkdf2_sha256$1000000$8xSSGaKoXH4kPHkRJTmPQP$10josPpFoid4xtVBi3H6iPKeRTd1iPr5Qf4b2HX4DXU=",
-        "last_login": "2026-06-11T11:13:28.013Z",
+        "last_login": "2026-06-25T08:56:05.458Z",
         "is_superuser": true,
         "username": "admin90",
         "first_name": "",
@@ -138,7 +138,7 @@
         "title": "rfrrkfjkd",
         "description": "11111111111111111111",
         "created_at": "2026-06-15T10:36:29.979Z",
-        "updated_at": "2026-06-22T12:43:28.493Z",
+        "updated_at": "2026-06-25T06:56:54.575Z",
         "status": 1,
         "project": 1,
         "is_deleted": true,
@@ -154,7 +154,7 @@
         "title": "11111111111111111",
         "description": "0101",
         "created_at": "2026-06-15T10:42:50.580Z",
-        "updated_at": "2026-06-22T12:41:20.988Z",
+        "updated_at": "2026-06-25T07:51:28.017Z",
         "status": 3,
         "project": 1,
         "is_deleted": true,
@@ -280,19 +280,65 @@
 },
 {
     "model": "todo.task",
-    "pk": 18,
+    "pk": 32,
     "fields": {
-        "title": "wdsaASDdsaddasdas",
-        "description": "saDSAD",
-        "created_at": "2026-06-22T11:19:00.052Z",
-        "updated_at": "2026-06-22T12:27:09.848Z",
+        "title": "11111111111111",
+        "description": "11111111",
+        "created_at": "2026-06-25T06:44:50.059Z",
+        "updated_at": "2026-06-25T06:49:20.334Z",
         "status": 1,
-        "project": 8,
+        "project": 4,
         "is_deleted": false,
         "type": [
-            2,
-            1,
-            3
+            1
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 33,
+    "fields": {
+        "title": "туц овалвы",
+        "description": "",
+        "created_at": "2026-06-25T06:45:10.207Z",
+        "updated_at": "2026-06-25T06:46:38.218Z",
+        "status": 1,
+        "project": 4,
+        "is_deleted": false,
+        "type": [
+            2
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 34,
+    "fields": {
+        "title": "1111111",
+        "description": "wwwwwwwwwwwww",
+        "created_at": "2026-06-25T06:57:15.755Z",
+        "updated_at": "2026-06-25T07:51:20.030Z",
+        "status": 1,
+        "project": 1,
+        "is_deleted": true,
+        "type": [
+            2
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 35,
+    "fields": {
+        "title": "33333333",
+        "description": "333333333",
+        "created_at": "2026-06-25T07:26:07.805Z",
+        "updated_at": "2026-06-25T07:26:07.819Z",
+        "status": 2,
+        "project": 4,
+        "is_deleted": false,
+        "type": [
+            2
         ]
     }
 },
@@ -372,7 +418,7 @@
     "model": "todo.project",
     "pk": 4,
     "fields": {
-        "name": "project 4",
+        "name": "project 433",
         "description": "fadjkhd\r\ndahj,vjhl\r\nfvvcn xmlk;dk",
         "created_at": "2026-06-09",
         "end_at": null
@@ -380,21 +426,21 @@
 },
 {
     "model": "todo.project",
-    "pk": 5,
-    "fields": {
-        "name": "Project 5",
-        "description": "sad",
-        "created_at": "2020-03-09",
-        "end_at": "2026-06-10"
-    }
-},
-{
-    "model": "todo.project",
-    "pk": 8,
+    "pk": 9,
     "fields": {
         "name": "Электроника",
         "description": "",
         "created_at": "2026-12-01",
+        "end_at": null
+    }
+},
+{
+    "model": "todo.project",
+    "pk": 14,
+    "fields": {
+        "name": "phone 2",
+        "description": "",
+        "created_at": "2020-03-09",
         "end_at": null
     }
 }
