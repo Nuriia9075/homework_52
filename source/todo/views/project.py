@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from django.db.models import Q
@@ -53,7 +54,7 @@ class ProjectDetailView(DetailView):
         context['tasks'] = self.object.tasks.exclude(is_deleted=True)
         return context
 
-class ProjectCreateView(CreateView):
+class ProjectCreateView(LoginRequiredMixin, CreateView):
     template_name = "project/create.html"
     form_class = ProjectForm
 
@@ -63,9 +64,9 @@ class ProjectCreateView(CreateView):
         return context
 
     def get_success_url(self):
-        return reverse("detail", kwargs={"pk": self.object.pk})
+        return reverse("todo:detail", kwargs={"pk": self.object.pk})
 
-class ProjectUpdateView(UpdateView):
+class ProjectUpdateView(LoginRequiredMixin, UpdateView):
     model = Project
     form_class = ProjectForm
     template_name = "project/update.html"
@@ -76,9 +77,9 @@ class ProjectUpdateView(UpdateView):
         return context
 
     def get_success_url(self):
-        return reverse("detail", kwargs={"pk": self.kwargs['pk']})
+        return reverse("todo:detail", kwargs={"pk": self.kwargs['pk']})
 
-class ProjectDeleteView(DeleteView):
+class ProjectDeleteView(LoginRequiredMixin, DeleteView):
     template_name = "project/delete.html"
     model = Project
-    success_url = reverse_lazy("projects")
+    success_url = reverse_lazy("todo:projects")
