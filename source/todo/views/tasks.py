@@ -61,8 +61,6 @@ class TaskUpdateView(LoginRequiredMixin, UpdateView):
 
 class TaskDeleteView(LoginRequiredMixin, DeleteView):
     model = Task
-    template_name = "todolist/task_delete.html"
-
     def form_valid(self, form):
         self.object = self.get_object()
         self.object.is_deleted = True

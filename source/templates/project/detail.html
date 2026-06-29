@@ -33,5 +33,19 @@
             </a>
         </div>
     </div>
+    <div class="card my-5">
+        <div class="card-header">
+            Участники проекта
+        </div>
+        <div class="card-body">
+            {% include 'partials/user_list.html' %}
+        </div>
+        <div class="text-end me-3 mb-3">
+           <button data-bs-toggle="modal" data-bs-target="#addUserModal" class="btn btn-outline-warning">
+                <span>Добавить участника</span>
+           </button>
+        </div>
+    </div>
     {% include 'partials/project_delete_modal.html' with project=project %}
+    {%  include 'partials/add_user_modal.html' with all_users=all_users project=project %}
 {% endblock %}

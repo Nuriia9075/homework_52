@@ -1,10 +1,14 @@
+
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth import  get_user_model
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from django.db.models import Q
 from todo.forms import SimpleSearchForm, ProjectForm
 from todo.models.project import Project
 from urllib.parse import urlencode
+
+User = get_user_model()
 
 
 class ProjectListView(ListView):
@@ -52,11 +56,17 @@ class ProjectDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['search_form'] = SimpleSearchForm()
         context['tasks'] = self.object.tasks.exclude(is_deleted=True)
+        context['all_users'] = User.objects.exclude(projects=self.object)
         return context
 
 class ProjectCreateView(LoginRequiredMixin, CreateView):
     template_name = "project/create.html"
     form_class = ProjectForm
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        self.object.users.add(self.request.user)
+        return response
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
