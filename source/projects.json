@@ -1,0 +1,567 @@
+[
+{
+    "model": "auth.group",
+    "pk": 1,
+    "fields": {
+        "name": "Project Manager",
+        "permissions": []
+    }
+},
+{
+    "model": "auth.group",
+    "pk": 2,
+    "fields": {
+        "name": "Team Lead",
+        "permissions": []
+    }
+},
+{
+    "model": "auth.group",
+    "pk": 3,
+    "fields": {
+        "name": "Developer",
+        "permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$8xSSGaKoXH4kPHkRJTmPQP$10josPpFoid4xtVBi3H6iPKeRTd1iPr5Qf4b2HX4DXU=",
+        "last_login": "2026-06-29T09:44:18.526Z",
+        "is_superuser": true,
+        "username": "admin90",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-06-11T11:10:32.238Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$hf0Hw0cPExcLXvAOKOeF56$/2uV8A3Ce4ramgKStQP4tNYU+Y6/vSh+OfU5m0guiqo=",
+        "last_login": "2026-06-29T06:52:55.461Z",
+        "is_superuser": false,
+        "username": "keny9075@gmail.com",
+        "first_name": "Нурия",
+        "last_name": "Keny",
+        "email": "keny9075@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-29T06:52:54.853Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$TrYGowwXLWfhctnrSVbxKe$LME8r07lHhdUWO//jGjrJdXk64EQCpSmRLpgjdyCWJU=",
+        "last_login": "2026-06-29T07:14:32.527Z",
+        "is_superuser": false,
+        "username": "qwe",
+        "first_name": "last",
+        "last_name": "",
+        "email": "qwe@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-29T07:14:31.956Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$n6s6yYcUnuUK1lW4wVO2tP$XEbDlTOAGtDLgBh9F/ZpmfWLYvEaUT0gxk8OJZvhQAI=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "team_lead",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-29T12:01:34Z",
+        "groups": [
+            2
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$vNWiu58WnACOIbQhIyJ1NQ$Tbj6TeN+FUBx8IP//8e1R4CMx+J3JKTkb2M6Uxvb818=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "developer",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-29T12:02:01Z",
+        "groups": [
+            3
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$WZHC22W3nr3em1etbGAAAp$5joTbzYpugnYm3DI+avS3gwwcpuhGxLk46zeCwZmCmw=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "manager",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-29T12:02:18Z",
+        "groups": [
+            1
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "todo.project",
+    "pk": 1,
+    "fields": {
+        "name": "Project 111",
+        "description": "ref=\"{% url 'detail' project.pk %}\" class=\"card-link\">\r\n            <div class=\"card card-list border-secondary h-100 mb-3\">\r\n                <div class=\"card-header d-flex justify-content-between\">\r\n                    <h5 class=\"card-title\">{{ project.name }}</h5>",
+        "created_at": "2026-12-01",
+        "end_at": null,
+        "users": []
+    }
+},
+{
+    "model": "todo.project",
+    "pk": 2,
+    "fields": {
+        "name": "project 2",
+        "description": "ref=\"{% url 'detail' project.pk %}\" class=\"card-link\">\r\n            <div class=\"card card-list border-secondary h-100 mb-3\">\r\n                <div class=\"card-header d-flex justify-content-between\">\r\n                    <h5 class=\"card-title\">{{ project.name }}</h5>",
+        "created_at": "2020-03-09",
+        "end_at": "2026-06-10",
+        "users": [
+            3
+        ]
+    }
+},
+{
+    "model": "todo.project",
+    "pk": 3,
+    "fields": {
+        "name": "project 3",
+        "description": "dkafjshlflbdj\r\ndkfdajs\r\nsdjafkjb;\r\ndkfjdfoujnvk",
+        "created_at": "2026-06-02",
+        "end_at": null,
+        "users": []
+    }
+},
+{
+    "model": "todo.project",
+    "pk": 4,
+    "fields": {
+        "name": "project 433",
+        "description": "fadjkhd\r\ndahj,vjhl\r\nfvvcn xmlk;dk",
+        "created_at": "2026-06-09",
+        "end_at": null,
+        "users": []
+    }
+},
+{
+    "model": "todo.project",
+    "pk": 9,
+    "fields": {
+        "name": "Электроника",
+        "description": "",
+        "created_at": "2026-12-01",
+        "end_at": null,
+        "users": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "todo.project",
+    "pk": 14,
+    "fields": {
+        "name": "phone 2",
+        "description": "",
+        "created_at": "2020-03-09",
+        "end_at": null,
+        "users": []
+    }
+},
+{
+    "model": "todo.project",
+    "pk": 15,
+    "fields": {
+        "name": "phone",
+        "description": "",
+        "created_at": "2020-03-09",
+        "end_at": null,
+        "users": [
+            1
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 1,
+    "fields": {
+        "title": "tasktask11",
+        "description": "tasktask1",
+        "created_at": "2026-06-11T11:15:29.252Z",
+        "updated_at": "2026-06-29T11:46:15.594Z",
+        "status": 1,
+        "project": 2,
+        "is_deleted": false,
+        "type": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 2,
+    "fields": {
+        "title": "Task 2",
+        "description": "ssndk.sajf",
+        "created_at": "2026-06-11T11:15:43.804Z",
+        "updated_at": "2026-06-11T11:15:43.804Z",
+        "status": 2,
+        "project": 1,
+        "is_deleted": false,
+        "type": [
+            2
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 3,
+    "fields": {
+        "title": "Task 3",
+        "description": "kn.kdsajkf'",
+        "created_at": "2026-06-11T11:15:55.890Z",
+        "updated_at": "2026-06-11T11:18:45.946Z",
+        "status": 3,
+        "project": 2,
+        "is_deleted": false,
+        "type": [
+            1
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 4,
+    "fields": {
+        "title": "Task 4",
+        "description": "sadkasfj/ksdf",
+        "created_at": "2026-06-11T11:16:12.919Z",
+        "updated_at": "2026-06-11T11:16:12.919Z",
+        "status": 1,
+        "project": 2,
+        "is_deleted": false,
+        "type": [
+            1
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 5,
+    "fields": {
+        "title": "Task 7",
+        "description": "njfks;fjf",
+        "created_at": "2026-06-11T11:16:27.260Z",
+        "updated_at": "2026-06-22T12:14:35.090Z",
+        "status": 2,
+        "project": 1,
+        "is_deleted": false,
+        "type": [
+            1
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 6,
+    "fields": {
+        "title": "Task 6",
+        "description": "fnak.sjf/s",
+        "created_at": "2026-06-11T11:16:41.122Z",
+        "updated_at": "2026-06-29T08:31:07.483Z",
+        "status": 3,
+        "project": 1,
+        "is_deleted": true,
+        "type": [
+            2
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 7,
+    "fields": {
+        "title": "TaskTask10",
+        "description": "TaskTask10",
+        "created_at": "2026-06-11T12:06:42.276Z",
+        "updated_at": "2026-06-15T12:20:53.618Z",
+        "status": 1,
+        "project": 4,
+        "is_deleted": false,
+        "type": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 8,
+    "fields": {
+        "title": "rfrrkfjkd",
+        "description": "11111111111111111111",
+        "created_at": "2026-06-15T10:36:29.979Z",
+        "updated_at": "2026-06-25T06:56:54.575Z",
+        "status": 1,
+        "project": 1,
+        "is_deleted": true,
+        "type": [
+            2
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 9,
+    "fields": {
+        "title": "11111111111111111",
+        "description": "0101",
+        "created_at": "2026-06-15T10:42:50.580Z",
+        "updated_at": "2026-06-25T07:51:28.017Z",
+        "status": 3,
+        "project": 1,
+        "is_deleted": true,
+        "type": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 10,
+    "fields": {
+        "title": "task wjhf",
+        "description": "dnkjfshf",
+        "created_at": "2026-06-15T12:10:47.850Z",
+        "updated_at": "2026-06-15T12:10:47.850Z",
+        "status": 1,
+        "project": 2,
+        "is_deleted": false,
+        "type": [
+            1
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 11,
+    "fields": {
+        "title": "task 23726",
+        "description": "fjehfjehr;fiefrfrff",
+        "created_at": "2026-06-15T12:11:08.960Z",
+        "updated_at": "2026-06-15T12:11:08.960Z",
+        "status": 2,
+        "project": 2,
+        "is_deleted": false,
+        "type": [
+            2
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 12,
+    "fields": {
+        "title": "task 784",
+        "description": "efejfrejghrjegjrtegnhjt",
+        "created_at": "2026-06-15T12:11:24.327Z",
+        "updated_at": "2026-06-15T12:11:24.327Z",
+        "status": 2,
+        "project": 3,
+        "is_deleted": false,
+        "type": [
+            3
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 13,
+    "fields": {
+        "title": "tasklskaf",
+        "description": "fmerklfkjer:F",
+        "created_at": "2026-06-15T12:11:40.862Z",
+        "updated_at": "2026-06-15T12:11:40.862Z",
+        "status": 3,
+        "project": 3,
+        "is_deleted": false,
+        "type": [
+            3
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 14,
+    "fields": {
+        "title": "hdusfahfas",
+        "description": "kmfdfk",
+        "created_at": "2026-06-15T12:12:03.523Z",
+        "updated_at": "2026-06-15T12:12:03.523Z",
+        "status": 2,
+        "project": 3,
+        "is_deleted": false,
+        "type": [
+            1
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 15,
+    "fields": {
+        "title": "ddddddddddddddddddfsf",
+        "description": "sfdsfa",
+        "created_at": "2026-06-15T12:12:23.871Z",
+        "updated_at": "2026-06-15T12:12:23.871Z",
+        "status": 3,
+        "project": 3,
+        "is_deleted": false,
+        "type": [
+            1,
+            3
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 17,
+    "fields": {
+        "title": "Task 7",
+        "description": "",
+        "created_at": "2026-06-22T10:49:53.463Z",
+        "updated_at": "2026-06-22T10:49:53.476Z",
+        "status": 2,
+        "project": 1,
+        "is_deleted": false,
+        "type": [
+            1
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 32,
+    "fields": {
+        "title": "11111111111111",
+        "description": "11111111",
+        "created_at": "2026-06-25T06:44:50.059Z",
+        "updated_at": "2026-06-25T06:49:20.334Z",
+        "status": 1,
+        "project": 4,
+        "is_deleted": false,
+        "type": [
+            1
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 33,
+    "fields": {
+        "title": "туц овалвы",
+        "description": "",
+        "created_at": "2026-06-25T06:45:10.207Z",
+        "updated_at": "2026-06-25T06:46:38.218Z",
+        "status": 1,
+        "project": 4,
+        "is_deleted": false,
+        "type": [
+            2
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 34,
+    "fields": {
+        "title": "1111111",
+        "description": "wwwwwwwwwwwww",
+        "created_at": "2026-06-25T06:57:15.755Z",
+        "updated_at": "2026-06-25T07:51:20.030Z",
+        "status": 1,
+        "project": 1,
+        "is_deleted": true,
+        "type": [
+            2
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 35,
+    "fields": {
+        "title": "33333333",
+        "description": "333333333",
+        "created_at": "2026-06-25T07:26:07.805Z",
+        "updated_at": "2026-06-25T07:26:07.819Z",
+        "status": 2,
+        "project": 4,
+        "is_deleted": false,
+        "type": [
+            2
+        ]
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 38,
+    "fields": {
+        "title": "rrrrrrrrr",
+        "description": "",
+        "created_at": "2026-06-29T08:25:07.513Z",
+        "updated_at": "2026-06-29T08:26:15.674Z",
+        "status": 2,
+        "project": 9,
+        "is_deleted": true,
+        "type": [
+            2
+        ]
+    }
+}
+]
