@@ -19,12 +19,13 @@
             Все проекты
         </a>
        {% if request.user.is_authenticated %}
-            <form action="{% url 'account:logout' %}" method="POST" novalidate>
+            <form action="{% url 'account:logout' %}?next={{ request.get_full_path }}" method="POST" novalidate>
                 {% csrf_token %}
                <button type="submit" class="navbar-brand fw-bold fs-4 text-gradient btn btn-link p-0 border-0 align-baseline">Выйти</button>
             </form>
         {% else %}
-            <a class="navbar-brand fw-bold fs-4 text-gradient" href="{% url 'account:login' %}">Войти</a>
+            <a class="navbar-brand fw-bold fs-4 text-gradient" href="{% url 'account:login' %}?next={{ request.get_full_path }}">Войти</a>
+            <a class="navbar-brand fw-bold fs-4 text-gradient" href="{% url 'account:register' %}?next={{ request.get_full_path }}">Регистрация</a>
         {% endif %}
           <span class="navbar-brand fw-bold fs-4 text-gradient">{{ request.user }}</span>
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
