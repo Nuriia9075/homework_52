@@ -6,7 +6,7 @@ from django.http import Http404
 from django.views.generic import DetailView
 from todo.models.task import Task
 from todo.forms import SimpleSearchForm, TaskForm
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
 
 class TaskDetailView(DetailView):
     model = Task
@@ -24,10 +24,21 @@ class TaskDetailView(DetailView):
         context['search_form'] = SimpleSearchForm()
         return context
 
-class ProjectTaskAddView(LoginRequiredMixin, CreateView):
+class ProjectTaskAddView(PermissionRequiredMixin, CreateView):
     model = Task
     form_class = TaskForm
     template_name = "todolist/task_add.html"
+
+    def has_permission(self):
+        project = get_object_or_404(Project, pk=self.kwargs['pk'])
+        if not self.request.user.is_authenticated:
+            return False
+        user_groups = self.request.user.groups.all()
+        is_manager = user_groups.filter(name='Project Manager').exists()
+        is_team_lead = user_groups.filter(name='Team Lead').exists()
+        is_developer = user_groups.filter(name='Developer').exists()
+        is_member = project.users.filter(pk=self.request.user.pk).exists()
+        return (is_manager or is_team_lead or is_developer) and is_member
 
     def form_valid(self, form):
         project = get_object_or_404(Project, pk=self.kwargs['pk'])
@@ -45,10 +56,22 @@ class ProjectTaskAddView(LoginRequiredMixin, CreateView):
         context['search_form'] = SimpleSearchForm()
         return context
 
-class TaskUpdateView(LoginRequiredMixin, UpdateView):
+class TaskUpdateView(PermissionRequiredMixin, UpdateView):
     model = Task
     form_class = TaskForm
     template_name = "todolist/task_update.html"
+
+    def has_permission(self):
+        task = self.get_object()
+        project = task.project
+        if not self.request.user.is_authenticated:
+            return False
+        user_groups = self.request.user.groups.all()
+        is_manager = user_groups.filter(name='Project Manager').exists()
+        is_team_lead = user_groups.filter(name='Team Lead').exists()
+        is_developer = user_groups.filter(name='Developer').exists()
+        is_member = project.users.filter(pk=self.request.user.pk).exists()
+        return (is_manager or is_team_lead or is_developer) and is_member
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -59,8 +82,20 @@ class TaskUpdateView(LoginRequiredMixin, UpdateView):
         return reverse("todo:detail", kwargs={"pk": self.object.project.pk})
 
 
-class TaskDeleteView(LoginRequiredMixin, DeleteView):
+class TaskDeleteView(PermissionRequiredMixin, DeleteView):
     model = Task
+
+    def has_permission(self):
+        task = self.get_object()
+        project = task.project
+        if not self.request.user.is_authenticated:
+            return False
+        user_groups = self.request.user.groups.all()
+        is_manager = user_groups.filter(name='Project Manager').exists()
+        is_team_lead = user_groups.filter(name='Team Lead').exists()
+        is_member = project.users.filter(pk=self.request.user.pk).exists()
+        return (is_manager or is_team_lead ) and is_member
+
     def form_valid(self, form):
         self.object = self.get_object()
         self.object.is_deleted = True
